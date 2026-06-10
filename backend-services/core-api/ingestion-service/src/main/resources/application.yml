@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+mqtt:
+ broker-url: tcp://localhost:1883
+ client-id: spring-boot-backend-1
+ topic: factory/machine1/telemetry
+
+kafka:
+ topic: telemetry-stream
+
+
