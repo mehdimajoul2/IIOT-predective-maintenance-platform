@@ -37,13 +37,10 @@ public class KafkaToInfluxConsumer {
 
     @KafkaListener(topics = "${kafka.topic}", groupId = "iiot-storage-group")
     public void consumeTelemetry(String message){
-        System.out.println("Kafka received data: " + message);
         try{
             TelemetryPayload payload = objectMapper.readValue(message, TelemetryPayload.class);
-            System.out.println("Kafka received data: " + payload.temperature);
 
             Instant eventTime = Instant.parse(payload.timestamp());
-            System.out.println("Kafka received data: " + eventTime.toString());
 
             Point point = Point.measurement("machine_telemetry")
                                .addTag("device_id", payload.device_id())
